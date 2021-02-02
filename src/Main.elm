@@ -42,7 +42,15 @@ type alias Model =
 
 init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
 init _ url key =
-    ( Model GoTrue.defaultConfig key url, Cmd.none )
+  let
+      config = GoTrue.defaultConfig
+      goTrueUrl = "https://" ++ url.host ++ config.apiUrl
+      newConfig = {config | goTrueUrl = goTrueUrl}
+  in
+    ( Model newConfig key url
+    , Cmd.none
+    )
+   
 
   
 type Msg
