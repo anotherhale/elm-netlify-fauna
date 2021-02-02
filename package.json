@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "elm make src/Main"
+    "build": "cd public; elm make ../src/Main.elm"
   },
   "repository": {
     "type": "git",
@@ -15,8 +15,5 @@
   "bugs": {
     "url": "https://github.com/anotherhale/elm-netlify-fauna/issues"
   },
-  "homepage": "https://github.com/anotherhale/elm-netlify-fauna#readme",
-  "dependencies": {
-    "elm": "^0.19.1-5"
-  }
+  "homepage": "https://github.com/anotherhale/elm-netlify-fauna#readme"
 }
