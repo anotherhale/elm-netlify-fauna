@@ -78,6 +78,7 @@ view model =
   { title = "URL Interceptor"
   , body =
       [ text "The current URL is: "
+      , a [ href "/" ] [text "home"]
       , b [] [ text (model.config.goTrueUrl) ]
       ]
   }
