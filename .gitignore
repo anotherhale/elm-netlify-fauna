@@ -1,3 +1,4 @@
 # Local Netlify folder
 .netlify
 elm-stuff
+node_modules
