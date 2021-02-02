@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/anotherhale/elm-netlify-fauna#readme",
   "dependencies": {
-    "elm": "^0.19.1"
+    "elm": "^0.19.1-5"
   }
 }
