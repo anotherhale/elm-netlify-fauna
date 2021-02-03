@@ -5253,20 +5253,18 @@ var $author$project$Main$update = F2(
 			}
 		} else {
 			var url = msg.a;
-			var goTrueUrl = 'https://' + (url.host + model.config.apiUrl);
-			var config = model.config;
-			var newConfig = _Utils_update(
-				config,
-				{goTrueUrl: goTrueUrl});
 			return _Utils_Tuple2(
 				_Utils_update(
 					model,
-					{config: newConfig, url: url}),
+					{url: url}),
 				$elm$core$Platform$Cmd$none);
 		}
 	});
-var $elm$html$Html$a = _VirtualDom_node('a');
 var $elm$html$Html$b = _VirtualDom_node('b');
+var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
+var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
+var $elm$html$Html$ul = _VirtualDom_node('ul');
+var $elm$html$Html$a = _VirtualDom_node('a');
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -5281,29 +5279,48 @@ var $elm$html$Html$Attributes$href = function (url) {
 		'href',
 		_VirtualDom_noJavaScriptUri(url));
 };
-var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
-var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
+var $elm$html$Html$li = _VirtualDom_node('li');
+var $author$project$Main$viewLink = function (path) {
+	return A2(
+		$elm$html$Html$li,
+		_List_Nil,
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$a,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$href(path)
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text(path)
+					]))
+			]));
+};
 var $author$project$Main$view = function (model) {
 	return {
 		body: _List_fromArray(
 			[
 				$elm$html$Html$text('The current URL is: '),
 				A2(
-				$elm$html$Html$a,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$href('/')
-					]),
-				_List_fromArray(
-					[
-						$elm$html$Html$text('home')
-					])),
-				A2(
 				$elm$html$Html$b,
 				_List_Nil,
 				_List_fromArray(
 					[
-						$elm$html$Html$text(model.config.goTrueUrl)
+						$elm$html$Html$text(
+						$elm$url$Url$toString(model.url))
+					])),
+				A2(
+				$elm$html$Html$ul,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$author$project$Main$viewLink('/#/home'),
+						$author$project$Main$viewLink('/#/profile'),
+						$author$project$Main$viewLink('/#/reviews/the-century-of-the-self'),
+						$author$project$Main$viewLink('/#/reviews/public-opinion'),
+						$author$project$Main$viewLink('/#/reviews/shah-of-shahs')
 					]))
 			]),
 		title: 'URL Interceptor'
