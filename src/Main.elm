@@ -70,13 +70,7 @@ update msg model =
           ( model, Nav.load href )
 
     UrlChanged url ->
-        let
-            config = model.config
-            goTrueUrl = "https://" ++ url.host ++ model.config.apiUrl
-            newConfig = {config | goTrueUrl = goTrueUrl}
-        in
-        
-      ( { model | url = url, config = newConfig }
+      ( { model | url = url }
       , Cmd.none
       )
 
@@ -86,7 +80,18 @@ view model =
   { title = "URL Interceptor"
   , body =
       [ text "The current URL is: "
-      , a [ href "/" ] [text "home"]
-      , b [] [ text (model.config.goTrueUrl) ]
+      , b [] [ text (Url.toString model.url) ]
+      , ul []
+          [ viewLink "/home"
+          , viewLink "/profile"
+          , viewLink "/reviews/the-century-of-the-self"
+          , viewLink "/reviews/public-opinion"
+          , viewLink "/reviews/shah-of-shahs"
+          ]
       ]
   }
+
+
+viewLink : String -> Html msg
+viewLink path =
+  li [] [ a [ href path ] [ text path ] ]
